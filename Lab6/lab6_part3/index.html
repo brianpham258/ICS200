@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <script type="text/javascript">
+        function f() {
+            let elmt = document.getElementById("face");
+
+            fetch("http://lab6-part3-qp-images.s3-website-us-east-1.amazonaws.com/happyface.txt", { mode: "cors"})
+                .then(response => {
+                    return response.text();
+                })
+                .then(data => {
+                    elmt.innerHTML = data;
+                })
+                .catch(err => {
+                    elmt.innerHTML = '<img src="sadface.jpg" />'
+                }); 
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" onclick="f()", value="press me, win smile!" />
+    <div id="face"></div>
+</body>
+
+</html>
